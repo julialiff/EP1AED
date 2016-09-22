@@ -124,14 +124,65 @@ bool inserirElemento(PFILA f, int id, float prioridade){
 bool aumentarPrioridade(PFILA f, int id, float novaPrioridade){
   if (id < 0 || id >= f->maxRegistros) return false;
   if(f->arranjo[id]==NULL) return false;
-  if(f->arranjo[id]->prioridade >= prioridade) return false;
+  if(f->arranjo[id]->prioridade >= novaPrioridade) return false;
 
+  PONT elem = f->arranjo[id];
+  elem->prioridade = novaPrioridade;
+
+  if(elem->prox && elem->ant){
+    printf("tem prox e ant\n");
+    elem->prox->ant = elem->ant;
+    elem->ant->prox = elem->prox;
+  }
+  if(elem->prox && !elem->ant){
+    printf("tem prox e não ant\n");
+    return true;
+  }
+  if(elem->ant && !elem->prox){
+    printf("tem ant e não prox\n");
+    elem->ant->prox = NULL;
+  }
+
+  // PONT proximo = NULL;
+  // PONT anterior = NULL;
+  // if(elem->prox) proximo = elem->prox;
+  // if(elem->ant) anterior = elem->ant;
+  // anterior->prox = proximo;
+  // proximo->ant = anterior;
+
+  // printf("elem id: %i prioridade %f\n", elem->id, elem->prioridade);
+  // printf("prox id: %i prioridade %f\n", proximo->id, proximo->prioridade);
+  // printf("ant  id: %i prioridade %f\n", anterior->id, anterior->prioridade);
+
+  printf("elem->prioridade: %f f->fila->prioridade%f\n", elem->prioridade, f->fila->prioridade);
+  if(elem->prioridade > f->fila->prioridade){ //se eh o novo inicio de fila
+    elem->ant = NULL;
+    elem->prox = f->fila;
+    f->fila = elem;
+    return true;
+  }
+
+  PONT percorreFila = f->fila;
+  PONT aux = NULL;
+  while(percorreFila){
+    if(percorreFila->prioridade < novaPrioridade){
+      printf("o item %i tem prioridade %f\n", percorreFila->id, percorreFila->prioridade);
+      aux = percorreFila;
+      break;
+    }
+    percorreFila = percorreFila->prox;
+  }
+  aux->ant->prox = elem;
+  elem->prox = aux;
+  elem->ant = aux->ant;
+  aux->ant = elem;
+  return true;
 }
 
 bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
   if (id < 0 || id >= f->maxRegistros) return false;
   if(f->arranjo[id]==NULL) return false;
-  if(f->arranjo[id]->prioridade <= prioridade) return false;
+  if(f->arranjo[id]->prioridade <= novaPrioridade) return false;
   return false;
 }
 
