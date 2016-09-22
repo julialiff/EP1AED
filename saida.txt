@@ -1,0 +1,114 @@
+Log [elementos: 0]
+
+
+ok
+Log [elementos: 1]
+(nil)[1;1.000000;0x1afb0a0](nil) 
+
+ok
+Log [elementos: 2]
+(nil)[3;3.000000;0x1afb0c0]0x1afb0a0 0x1afb0c0[1;1.000000;0x1afb0a0](nil) 
+
+ok
+Log [elementos: 3]
+(nil)[3;3.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+ok
+Log [elementos: 4]
+(nil)[3;3.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0]0x1afb100 0x1afb0a0[0;0.000000;0x1afb100](nil) 
+
+ok
+Log [elementos: 5]
+(nil)[5;5.000000;0x1afb120]0x1afb0c0 0x1afb120[3;3.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0]0x1afb100 0x1afb0a0[0;0.000000;0x1afb100](nil) 
+
+ok
+Log [elementos: 5]
+(nil)[5;10.000000;0x1afb120]0x1afb0c0 0x1afb120[3;3.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0]0x1afb100 0x1afb0a0[0;0.000000;0x1afb100](nil) 
+
+ok
+Log [elementos: 5]
+(nil)[0;15.000000;0x1afb100]0x1afb120 0x1afb100[5;10.000000;0x1afb120]0x1afb0c0 0x1afb120[3;3.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+ok
+Log [elementos: 5]
+(nil)[0;15.000000;0x1afb100]0x1afb120 0x1afb100[5;10.000000;0x1afb120]0x1afb0c0 0x1afb120[3;4.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+nok (9) - esperado, pois a nova prioridade nao eh maior
+Log [elementos: 5]
+(nil)[0;15.000000;0x1afb100]0x1afb120 0x1afb100[5;10.000000;0x1afb120]0x1afb0c0 0x1afb120[3;4.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+nok (10) - esperado, elemento com id=4 nao existe
+Log [elementos: 5]
+(nil)[0;15.000000;0x1afb100]0x1afb120 0x1afb100[5;10.000000;0x1afb120]0x1afb0c0 0x1afb120[3;4.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+Prioritario: 0, 15.000000
+Log [elementos: 4]
+(nil)[5;10.000000;0x1afb120]0x1afb0c0 0x1afb120[3;4.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+Prioritario: 5, 10.000000
+Log [elementos: 3]
+(nil)[3;4.000000;0x1afb0c0]0x1afb0e0 0x1afb0c0[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+Prioritario: 3, 4.000000
+Log [elementos: 2]
+(nil)[2;2.000000;0x1afb0e0]0x1afb0a0 0x1afb0e0[1;1.000000;0x1afb0a0](nil) 
+
+Prioritario: 2, 2.000000
+Log [elementos: 1]
+(nil)[1;1.000000;0x1afb0a0](nil) 
+
+Prioritario: 1, 1.000000
+Log [elementos: 0]
+
+
+Fila vazia (6)
+Log [elementos: 0]
+
+
+Fila vazia (7)
+Log [elementos: 0]
+
+
+ok
+Log [elementos: 1]
+(nil)[1;1.000000;0x1afb140](nil) 
+
+ok
+Log [elementos: 2]
+(nil)[3;3.000000;0x1afb160]0x1afb140 0x1afb160[1;1.000000;0x1afb140](nil) 
+
+ok
+Log [elementos: 3]
+(nil)[3;3.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140](nil) 
+
+ok
+Log [elementos: 4]
+(nil)[3;3.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140]0x1afb1a0 0x1afb140[0;0.500000;0x1afb1a0](nil) 
+
+ok
+Log [elementos: 5]
+(nil)[5;5.000000;0x1afb1c0]0x1afb160 0x1afb1c0[3;3.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140]0x1afb1a0 0x1afb140[0;0.500000;0x1afb1a0](nil) 
+
+
+
+Reduzindo prioridade
+ok
+Log [elementos: 5]
+(nil)[3;3.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140]0x1afb1a0 0x1afb140[0;0.500000;0x1afb1a0]0x1afb1c0 0x1afb1a0[5;0.000000;0x1afb1c0](nil) 
+
+nok (16) - esperado, nova prioridade eh maior
+Log [elementos: 5]
+(nil)[3;3.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140]0x1afb1a0 0x1afb140[0;0.500000;0x1afb1a0]0x1afb1c0 0x1afb1a0[5;0.000000;0x1afb1c0](nil) 
+
+ok
+Log [elementos: 5]
+(nil)[3;2.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140]0x1afb1a0 0x1afb140[0;0.500000;0x1afb1a0]0x1afb1c0 0x1afb1a0[5;0.000000;0x1afb1c0](nil) 
+
+nok (18) - esperado, nova prioridade eh igual
+Log [elementos: 5]
+(nil)[3;2.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140]0x1afb1a0 0x1afb140[0;0.500000;0x1afb1a0]0x1afb1c0 0x1afb1a0[5;0.000000;0x1afb1c0](nil) 
+
+nok (19) - esperado, elemento com id=4 nao existe
+Log [elementos: 5]
+(nil)[3;2.000000;0x1afb160]0x1afb180 0x1afb160[2;2.000000;0x1afb180]0x1afb140 0x1afb180[1;1.000000;0x1afb140]0x1afb1a0 0x1afb140[0;0.500000;0x1afb1a0]0x1afb1c0 0x1afb1a0[5;0.000000;0x1afb1c0](nil) 
+
