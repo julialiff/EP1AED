@@ -122,10 +122,16 @@ bool inserirElemento(PFILA f, int id, float prioridade){
 }
 
 bool aumentarPrioridade(PFILA f, int id, float novaPrioridade){
-  return false;
+  if (id < 0 || id >= f->maxRegistros) return false;
+  if(f->arranjo[id]==NULL) return false;
+  if(f->arranjo[id]->prioridade >= prioridade) return false;
+
 }
 
 bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
+  if (id < 0 || id >= f->maxRegistros) return false;
+  if(f->arranjo[id]==NULL) return false;
+  if(f->arranjo[id]->prioridade <= prioridade) return false;
   return false;
 }
 
