@@ -184,7 +184,7 @@ bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
   if(f->arranjo[id] == NULL) return false;
   if(f->arranjo[id]->prioridade <= novaPrioridade) return false;
 
-  elem = f->arranjo[id];
+  PONT elem = f->arranjo[id];
   elem->prioridade = novaPrioridade;
   if(elem->prox && elem->ant){
     elem->prox->ant = elem->ant;
@@ -223,7 +223,7 @@ bool consultarPrioridade(PFILA f, int id, float* resposta){
   if(id < 0 || id >= f->maxRegistros) return false;
   if(f->arranjo[id]){
     printf("%p\n",&f->arranjo[id]->prioridade);
-    resposta = &f->arranjo[id]->prioridade;
+    *resposta = f->arranjo[id]->prioridade;
     printf("%p\n", &resposta);
     return true;
   }

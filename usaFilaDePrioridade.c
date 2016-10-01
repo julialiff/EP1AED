@@ -136,10 +136,11 @@ int main() {
   // printf("\n\nReduzindo prioridade\n");
 
 
-  printf("----diminuir prioridade id: 5 prioridade 0-----\n");
-  if(reduzirPrioridade(f, 5, 0)) printf("ok\n");
-  else printf("nok (15)\n");
-  exibirLog(f);
+  // printf("----diminuir prioridade id: 5 prioridade 0-----\n");
+  // if(reduzirPrioridade(f, 5, 0)) printf("ok\n");
+  // else printf("nok (15)\n");
+  // exibirLog(f);
+
   // if(reduzirPrioridade(f, 0, 1)) printf("ok\n");
   // else printf("nok (16) - esperado, nova prioridade eh maior\n");
   // exibirLog(f);
