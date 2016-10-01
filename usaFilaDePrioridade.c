@@ -49,12 +49,14 @@ int main() {
     printf("prox: %p\n\n\n", percorre->prox);
     percorre = percorre->prox;
   }
-  int tam = tamanho(f);
-  printf("TAMANHO: %i\n",tam);
+  // int tam = tamanho(f);
+  // printf("TAMANHO: %i\n",tam);
   // float resposta;
-  // consultarPrioridade(f, 5, &resposta);
+  // if (consultarPrioridade(f, 0, &resposta)) printf("ok\n");
+  // else printf("notok\n");
 
-  // printf("resposta %f\n", &resposta);
+  // printf("\n\n\n\n");
+  // printf("RESPOSTA CONSULTA DE PRIORIDADE AO ELEMENTO: %f\n", resposta);
   // printf("\n\n\n\n");
   //   while(percorre){
   //   printf("end: %p\n", percorre);
