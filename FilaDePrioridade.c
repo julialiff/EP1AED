@@ -45,18 +45,9 @@ bool inserirElemento(PFILA f, int id, float prioridade){
     f->fila = f->arranjo[id];
     return true;
   }
-  if(tamanho(f)>=2){
-    PONT segundo = f->fila->prox;
-    if(segundo->prox==NULL){
-      printf("\nVERDADE PORRA\n");
-    }
-    printf("%p \n", segundo->prox);
-  }
   PONT percorreFila = f->fila;
 
-  while(percorreFila!=NULL){ //verifica se o id já existe na fila
-    printf("id: %i\n", id);
-    printf("PERCORRE FILA %p \n", f->fila->prox);
+  while(percorreFila){ //verifica se o id já existe na fila
     if(f->fila->id==id){
       return false;
     }
@@ -64,8 +55,6 @@ bool inserirElemento(PFILA f, int id, float prioridade){
   }
 
   f->arranjo[id] = elem; //se id nao existe na fila ainda, ele eh adicionado ao arranjo
-  printf("prioridade atual: %f\n" ,prioridade);
-  printf("prioridade do 1: %f\n" , f->fila->prioridade);
   if(prioridade > f->fila->prioridade){ //se a prioridade do elemento sendo inserido agora eh maior que a prioridade do primeiro elemento da fila, ele vira o começo da fila
     f->arranjo[id]->prox = f->fila;
     f->fila->ant = f->arranjo[id];
@@ -76,48 +65,27 @@ bool inserirElemento(PFILA f, int id, float prioridade){
   percorreFila = f->fila;
   PONT ultimo = NULL;
 
-  printf("--------------------------------\n");
-  printf("\nPRIORIDADE 1 fila %f\n",f->fila->prioridade);
-  printf("\nPRIORIDADE atual %f\n",prioridade);
-  //inserir entre elementos
-  while(percorreFila){
-    printf("%f\n",percorreFila->prioridade);
-    if(prioridade > percorreFila->prioridade){//se a prioridade do elemento sendo inserido agora eh maior que alguma prioridade, sera inserido antes dela
-      printf("entrou no if\n");
-      f->arranjo[id]->prox = percorreFila;
-      printf("arranjo: %i percorre fila: %i\n",f->arranjo[id]->id, percorreFila->id);
 
+  while(percorreFila){ //inserir entre elementos
+    if(prioridade > percorreFila->prioridade){//se a prioridade do elemento sendo inserido agora eh maior que alguma prioridade, sera inserido antes dela
+      f->arranjo[id]->prox = percorreFila;
       f->arranjo[id]->ant = percorreFila->ant;
       percorreFila->ant->prox = f->arranjo[id];
       percorreFila->ant = f->arranjo[id];
 
-      printf("\n #%i#\nok", f->arranjo[id]->id);
-      printf("\n #%i#\n", percorreFila->ant->id);
       percorreFila->ant = f->arranjo[id];
       return true;
     }
-    printf("PERCORRE FILA PROX: %p\n",percorreFila->prox); //inserir no fim
     if(!percorreFila->prox){
-      printf("ULTIMO: %p\n",percorreFila); //inserir no fim
       ultimo = percorreFila;
     }
     percorreFila = percorreFila->prox;
   }
-  printf("\n----------------INSERIR NO FIM------------------\n"); //inserir no fim
   if(ultimo){
     ultimo->prox = f->arranjo[id];
     f->arranjo[id]->ant = ultimo;
     printf("%f\n",ultimo->prioridade); //inserir no fim
   }
-  // printf("%f\n",percorreFila->ant->prioridade); //inserir no fim
-  //   if(percorreFila->ant!=NULL){
-  //     f->arranjo[id]->ant = percorreFila->ant;
-  //     percorreFila->ant->prox = f->arranjo[id];
-  //   }
-  //   percorreFila->ant = f->arranjo[id];
-  // return true;
-
-  printf("--------------------------------\n");
   return false;
 }
 
@@ -130,31 +98,16 @@ bool aumentarPrioridade(PFILA f, int id, float novaPrioridade){
   elem->prioridade = novaPrioridade;
 
   if(elem->prox && elem->ant){
-    printf("tem prox e ant\n");
     elem->prox->ant = elem->ant;
     elem->ant->prox = elem->prox;
   }
   if(elem->prox && !elem->ant){
-    printf("tem prox e não ant\n");
     return true;
   }
   if(elem->ant && !elem->prox){
-    printf("tem ant e não prox\n");
     elem->ant->prox = NULL;
   }
 
-  // PONT proximo = NULL;
-  // PONT anterior = NULL;
-  // if(elem->prox) proximo = elem->prox;
-  // if(elem->ant) anterior = elem->ant;
-  // anterior->prox = proximo;
-  // proximo->ant = anterior;
-
-  // printf("elem id: %i prioridade %f\n", elem->id, elem->prioridade);
-  // printf("prox id: %i prioridade %f\n", proximo->id, proximo->prioridade);
-  // printf("ant  id: %i prioridade %f\n", anterior->id, anterior->prioridade);
-
-  printf("elem->prioridade: %f f->fila->prioridade%f\n", elem->prioridade, f->fila->prioridade);
   if(elem->prioridade > f->fila->prioridade){ //se eh o novo inicio de fila
     elem->ant = NULL;
     elem->prox = f->fila;
@@ -166,7 +119,6 @@ bool aumentarPrioridade(PFILA f, int id, float novaPrioridade){
   PONT aux = NULL;
   while(percorreFila){
     if(percorreFila->prioridade < novaPrioridade){
-      printf("o item %i tem prioridade %f\n", percorreFila->id, percorreFila->prioridade);
       aux = percorreFila;
       break;
     }
@@ -204,10 +156,7 @@ bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
   PONT percorreFila = f->fila;
   PONT aux = NULL;
   while(percorreFila){
-    printf("percorreFila->prioridade: %f\n", percorreFila->prioridade);
     if(percorreFila->prioridade < novaPrioridade){
-      printf("o item %i tem prioridade %f\n", percorreFila->id, percorreFila->prioridade);
-      printf("percorreFila->prioridade: %f\n", percorreFila->prioridade);
       aux = percorreFila;
       break;
     }
@@ -215,13 +164,10 @@ bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
       percorreFila->prox = elem;
       elem->ant = percorreFila;
       elem->prox = NULL;
-      // aux = percorreFila;
       return true;
-      // break;
     }
     percorreFila = percorreFila->prox;
   }
-  printf("AUX o item %i tem prioridade %f\n", aux->id, aux->prioridade);
 
 
   aux->ant->prox = elem;
