@@ -181,9 +181,27 @@ bool aumentarPrioridade(PFILA f, int id, float novaPrioridade){
 
 bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
   if (id < 0 || id >= f->maxRegistros) return false;
-  if(f->arranjo[id]==NULL) return false;
+  if(f->arranjo[id] == NULL) return false;
   if(f->arranjo[id]->prioridade <= novaPrioridade) return false;
-  return false;
+
+  elem = f->arranjo[id];
+  elem->prioridade = novaPrioridade;
+  if(elem->prox && elem->ant){
+    elem->prox->ant = elem->ant;
+    elem->ant->prox = elem->prox;
+  }
+  if(elem->prox && !elem->ant){ //se ele for o primeiro
+    f->fila = f->fila->prox;
+    f->fila->ant = NULL;
+  }
+  if(elem->ant && !elem->prox){
+    return true;
+  }
+
+  PONT percorreFila = f->fila;
+
+
+  return true;
 }
 
 PONT removerElemento(PFILA f){
@@ -202,7 +220,7 @@ PONT removerElemento(PFILA f){
 }
 
 bool consultarPrioridade(PFILA f, int id, float* resposta){
-  if(id<0 || id >= f->maxRegistros) return false;
+  if(id < 0 || id >= f->maxRegistros) return false;
   if(f->arranjo[id]){
     printf("%p\n",&f->arranjo[id]->prioridade);
     resposta = &f->arranjo[id]->prioridade;

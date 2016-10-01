@@ -21,9 +21,9 @@ int main() {
   exibirLog(f);
 
 
-  if(inserirElemento(f, 0, 0)) printf("ok\n");
-  else printf("nok (4)\n");
-  exibirLog(f);
+  // if(inserirElemento(f, 0, 0)) printf("ok\n");
+  // else printf("nok (4)\n");
+  // exibirLog(f);
 
   // printf("INSERIR ELEMENTO 5,5\n");
 
@@ -65,38 +65,28 @@ int main() {
   //   percorre = percorre->ant;
   // }
 
-  printf("------AUMENTAR PRIORIDADE elemento 5 prioridade 10----------\n");
-  if(aumentarPrioridade(f, 5, 10)) printf("ok\n");
-  else printf("nok (6)\n");
-  exibirLog(f);
+  // printf("------AUMENTAR PRIORIDADE elemento 5 prioridade 10----------\n");
+  // if(aumentarPrioridade(f, 5, 10)) printf("ok\n");
+  // else printf("nok (6)\n");
+  // exibirLog(f);
+  // printf("------AUMENTAR PRIORIDADE elemento 0 prioridade 15----------\n");
+  // if(aumentarPrioridade(f, 0, 15)) printf("ok\n");
+  // else printf("nok (7)\n");
+  // exibirLog(f);
+  // printf("------AUMENTAR PRIORIDADE elemento 3 prioridade 4----------\n");
+  // if(aumentarPrioridade(f, 3, 4)) printf("ok\n");
+  // else printf("nok (8)\n");
+  // exibirLog(f);
+  // printf("------AUMENTAR PRIORIDADE elemento 3 prioridade 4----------\n");
+  // if(aumentarPrioridade(f, 3, 4)) printf("ok\n");
+  // else printf("nok (9) - esperado, pois a nova prioridade nao eh maior\n");
+  // exibirLog(f);
+  // printf("------AUMENTAR PRIORIDADE elemento 4 prioridade 4----------\n");
+  // if(aumentarPrioridade(f, 4, 4)) printf("ok\n");
+  // else printf("nok (10) - esperado, elemento com id=4 nao existe\n");
+  // exibirLog(f);
 
 
-  printf("------AUMENTAR PRIORIDADE elemento 0 prioridade 15----------\n");
-  if(aumentarPrioridade(f, 0, 15)) printf("ok\n");
-  else printf("nok (7)\n");
-  exibirLog(f);
-  printf("------AUMENTAR PRIORIDADE elemento 3 prioridade 4----------\n");
-  if(aumentarPrioridade(f, 3, 4)) printf("ok\n");
-  else printf("nok (8)\n");
-  exibirLog(f);
-  printf("------AUMENTAR PRIORIDADE elemento 3 prioridade 4----------\n");
-  if(aumentarPrioridade(f, 3, 4)) printf("ok\n");
-  else printf("nok (9) - esperado, pois a nova prioridade nao eh maior\n");
-  exibirLog(f);
-  printf("------AUMENTAR PRIORIDADE elemento 4 prioridade 4----------\n");
-  if(aumentarPrioridade(f, 4, 4)) printf("ok\n");
-  else printf("nok (10) - esperado, elemento com id=4 nao existe\n");
-  exibirLog(f);
-
-  percorre = f->fila;
-  while(percorre){
-    printf("end: %p\n", percorre);
-    printf("id: %i\n", percorre->id);
-    printf("prioridade: %f\n", percorre->prioridade);
-    printf("ant: %p\n", percorre->ant);
-    printf("prox: %p\n\n\n", percorre->prox);
-    percorre = percorre->prox;
-  }
   // PONT prioritario;
   // prioritario = removerElemento(f);
   // if (prioritario) printf("Prioritario: %i, %f\n", prioritario->id, prioritario->prioridade);
@@ -146,9 +136,10 @@ int main() {
   // printf("\n\nReduzindo prioridade\n");
 
 
-  // if(reduzirPrioridade(f, 5, 0)) printf("ok\n");
-  // else printf("nok (15)\n");
-  // exibirLog(f);
+  printf("----diminuir prioridade id: 5 prioridade 0-----\n");
+  if(reduzirPrioridade(f, 5, 0)) printf("ok\n");
+  else printf("nok (15)\n");
+  exibirLog(f);
   // if(reduzirPrioridade(f, 0, 1)) printf("ok\n");
   // else printf("nok (16) - esperado, nova prioridade eh maior\n");
   // exibirLog(f);
@@ -162,7 +153,16 @@ int main() {
   // else printf("nok (19) - esperado, elemento com id=4 nao existe\n");
   // exibirLog(f);
 
-
+  printf("\n\n\n");
+  percorre = f->fila;
+  while(percorre){
+    printf("end: %p\n", percorre);
+    printf("id: %i\n", percorre->id);
+    printf("prioridade: %f\n", percorre->prioridade);
+    printf("ant: %p\n", percorre->ant);
+    printf("prox: %p\n\n\n", percorre->prox);
+    percorre = percorre->prox;
+  }
 
 
   return 0;
