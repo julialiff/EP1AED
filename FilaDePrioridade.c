@@ -186,21 +186,48 @@ bool reduzirPrioridade(PFILA f, int id, float novaPrioridade){
 
   PONT elem = f->arranjo[id];
   elem->prioridade = novaPrioridade;
-  if(elem->prox && elem->ant){
+  if(elem->prox && elem->ant){ //se ele esta entre dois elementos
     elem->prox->ant = elem->ant;
     elem->ant->prox = elem->prox;
   }
-  if(elem->prox && !elem->ant){ //se ele for o primeiro
+  if(elem->prox && !elem->ant){ //se ele eh o primeiro
+    if(elem->prox->prioridade < elem->prioridade){ //se a prioridade dele ainda é a maior, mesmo com redução, nao mexemos em quem eh o primeiro da fila
+      return true;
+    }
     f->fila = f->fila->prox;
     f->fila->ant = NULL;
   }
-  if(elem->ant && !elem->prox){
+  if(elem->ant && !elem->prox){ //se ele eh o ultimo
     return true;
   }
 
   PONT percorreFila = f->fila;
+  PONT aux = NULL;
+  while(percorreFila){
+    printf("percorreFila->prioridade: %f\n", percorreFila->prioridade);
+    if(percorreFila->prioridade < novaPrioridade){
+      printf("o item %i tem prioridade %f\n", percorreFila->id, percorreFila->prioridade);
+      printf("percorreFila->prioridade: %f\n", percorreFila->prioridade);
+      aux = percorreFila;
+      break;
+    }
+    if(percorreFila->prox == NULL){
+      percorreFila->prox = elem;
+      elem->ant = percorreFila;
+      elem->prox = NULL;
+      // aux = percorreFila;
+      return true;
+      // break;
+    }
+    percorreFila = percorreFila->prox;
+  }
+  printf("AUX o item %i tem prioridade %f\n", aux->id, aux->prioridade);
 
 
+  aux->ant->prox = elem;
+  elem->prox = aux;
+  elem->ant = aux->ant;
+  aux->ant = elem;
   return true;
 }
 
